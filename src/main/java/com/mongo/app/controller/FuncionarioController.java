@@ -24,6 +24,11 @@ public class FuncionarioController {
        return  this.funcionarioService.obterPorCodigo(codigo);
     }
 
+    @GetMapping("/filtro")
+    public List<Funcionario>obterFuncionarioPorIdade(@RequestParam Integer de, @RequestParam Integer ate){
+        return this.funcionarioService.obterFuncionarioPorIdade(de,ate);
+    }
+
     @PostMapping
     public Funcionario criar(@RequestBody Funcionario funcionario) {
         return this.funcionarioService.criar(funcionario);

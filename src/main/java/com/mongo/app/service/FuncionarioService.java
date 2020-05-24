@@ -23,7 +23,15 @@ public class FuncionarioService {
         return funcionarioRepository.findById(codigo).orElseThrow(() -> new IllegalArgumentException("Funcionario não existe"));
     }
 
+    public List<Funcionario> obterFuncionarioPorIdade(Integer de, Integer ate) {
+        return this.funcionarioRepository.obterFuncionarioPorIdade(de, ate);
+    }
+
     public Funcionario criar(Funcionario funcionario) {
+
+        this.funcionarioRepository.findById(funcionario.getChefe().getCodigo())
+                .orElseThrow(() -> new IllegalArgumentException("Chefe não encontradp"));
+
         return this.funcionarioRepository.save(funcionario);
     }
 }
